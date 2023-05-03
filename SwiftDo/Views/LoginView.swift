@@ -12,12 +12,13 @@ struct LoginView: View {
     @State private var isSecure: Bool = true
     @State private var email: String = ""
     @State private var password: String = ""
-
+    @State private var confirmedPassword: String = ""
+    
     var body: some View {
         NavigationView {
             VStack {
                 //Header
-                HeaderView()
+                HeaderView(title: "SwiftDo", subtitle: "Get things done", angle: 15, backgroundColor: .pink)
                 
                 //Login Form
                 Form {
@@ -37,7 +38,6 @@ struct LoginView: View {
                             isSecure.toggle()
                         } label: {
                             Image(systemName: isSecure ? "eye.slash" : "eye")
-                                .foregroundColor(.pink)
                         }
                     }
                     
@@ -55,8 +55,8 @@ struct LoginView: View {
                         }
                     }
                     .padding()
-                    
                 }
+                .offset(y: -50)
                 
                 //Create Account
                 VStack{
@@ -65,7 +65,7 @@ struct LoginView: View {
                     NavigationLink("Create an Account", destination: RegisterView())
                 }
                 .padding(.bottom, 50)
-                
+
                 Spacer()
             }
         }
