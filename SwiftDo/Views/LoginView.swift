@@ -8,53 +8,44 @@
 import SwiftUI
 
 struct LoginView: View {
-    
-    @State private var isSecure: Bool = true
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var confirmedPassword: String = ""
+        
+    @StateObject var viewModel = LoginViewModel()
     
     var body: some View {
         NavigationView {
             VStack {
                 //Header
-                HeaderView(title: "SwiftDo", subtitle: "Get things done", angle: 15, backgroundColor: .pink)
+                HeaderView(title: "SwiftDo", subtitle: "Get things done", angle: 15, backgroundColor: .yellow)
                 
                 //Login Form
                 Form {
-                    TextField("Email...", text: $email)
+                    TextField("Email...", text: $viewModel.email)
                         .textFieldStyle(DefaultTextFieldStyle())
+                        .autocorrectionDisabled()
+                        .autocapitalization(.none)
                     
                     HStack {
-                        if isSecure {
-                            SecureField("Password...", text: $password)
+                        if viewModel.isSecure {
+                            SecureField("Password...", text: $viewModel.password)
                                 .textFieldStyle(DefaultTextFieldStyle())
+                                .autocorrectionDisabled()
                         } else {
-                            TextField("Password...", text: $password)
+                            TextField("Password...", text: $viewModel.password)
                                 .textFieldStyle(DefaultTextFieldStyle())
+                                .autocorrectionDisabled()
                         }
                         
                         Button {
-                            isSecure.toggle()
+                            viewModel.isSecure.toggle()
                         } label: {
-                            Image(systemName: isSecure ? "eye.slash" : "eye")
+                            Image(systemName: viewModel.isSecure ? "eye.slash" : "eye")
                         }
                     }
                     
                     
-                    Button {
-                        // Attempt log in...
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.blue)
-                            
-                            Text("Log In")
-                                .foregroundColor(.white)
-                                .bold()
-                        }
-                    }
-                    .padding()
+                    SDButton(title: "Log In", backgroundColor: .blue, action: {
+                        //Attempt log in...
+                    })
                 }
                 .offset(y: -50)
                 
@@ -62,13 +53,14 @@ struct LoginView: View {
                 VStack{
                     Text("New around here?")
                     
-                    NavigationLink("Create an Account", destination: RegisterView())
+                    NavigationLink("Register", destination: RegisterView())
+                        .foregroundColor(.green)
                 }
                 .padding(.bottom, 50)
 
                 Spacer()
             }
-        }
+        }.navigationBarBackButtonHidden()
     }
 }
 
