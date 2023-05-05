@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct RegisterView: View {
-
+    
     @StateObject var viewModel = RegisterViewModel()
     
     @State private var passwordPlaceholder = Text("Password...")
-    @State private var confirmedPasswordPlaceholder = Text("Confirmed Password...")
+    @State private var confirmPasswordPlaceholder = Text("Confirm Password...")
     
     var body: some View {
         NavigationStack {
@@ -21,6 +21,12 @@ struct RegisterView: View {
                 
                 //Login Form
                 Form {
+                    
+                    if !viewModel.errorMessage.isEmpty {
+                        Text(viewModel.errorMessage)
+                            .foregroundColor(.red)
+                    }
+                    
                     TextField("Username...", text: $viewModel.userName)
                         .textFieldStyle(DefaultTextFieldStyle())
                         .autocorrectionDisabled()
@@ -47,15 +53,16 @@ struct RegisterView: View {
                         } label: {
                             Image(systemName: viewModel.passwordIsSecure ? "eye.slash" : "eye")
                         }
+                        .foregroundColor(.green)
                     }
                     
                     HStack {
                         if viewModel.confirmedPasswordIsSecure {
-                            SecureField("", text: $viewModel.confirmedPassword, prompt: confirmedPasswordPlaceholder)
+                            SecureField("", text: $viewModel.confirmedPassword, prompt: confirmPasswordPlaceholder)
                                 .textFieldStyle(DefaultTextFieldStyle())
                                 .autocorrectionDisabled()
                         } else {
-                            TextField("", text: $viewModel.confirmedPassword, prompt: confirmedPasswordPlaceholder)
+                            TextField("", text: $viewModel.confirmedPassword, prompt: confirmPasswordPlaceholder)
                                 .textFieldStyle(DefaultTextFieldStyle())
                                 .autocorrectionDisabled()
                         }
@@ -65,20 +72,14 @@ struct RegisterView: View {
                         } label: {
                             Image(systemName: viewModel.confirmedPasswordIsSecure ? "eye.slash" : "eye")
                         }
+                        .foregroundColor(.green)
                     }
                     SDButton(title: "Register", backgroundColor: .green, action: {
-                        if viewModel.password != viewModel.confirmedPassword {
-                            viewModel.password = ""
-                            viewModel.confirmedPassword = ""
-                            
-                            passwordPlaceholder = Text("Password...").foregroundColor(.red)
-                            confirmedPasswordPlaceholder = Text("Confirmed Password").foregroundColor(.red)
-                        } else {
-                            print("passwords are the same...")
-                        }
+                        viewModel.register()
                     })
                 }
-                .offset(y: -100)
+                .scrollDisabled(true)
+                .offset(y: -150)
                 
                 //Create Account
                 VStack{

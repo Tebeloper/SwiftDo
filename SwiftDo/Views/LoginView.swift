@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-        
+    
     @StateObject var viewModel = LoginViewModel()
     
     var body: some View {
@@ -19,6 +19,12 @@ struct LoginView: View {
                 
                 //Login Form
                 Form {
+                    
+                    if !viewModel.errorMessage.isEmpty {
+                        Text(viewModel.errorMessage)
+                            .foregroundColor(.red)
+                    }
+                    
                     TextField("Email...", text: $viewModel.email)
                         .textFieldStyle(DefaultTextFieldStyle())
                         .autocorrectionDisabled()
@@ -45,9 +51,10 @@ struct LoginView: View {
                     
                     SDButton(title: "Log In", backgroundColor: .blue, action: {
                         //Attempt log in...
+                        viewModel.login()
                     })
                 }
-                .offset(y: -50)
+                .offset(y: -150)
                 
                 //Create Account
                 VStack{
@@ -57,7 +64,7 @@ struct LoginView: View {
                         .foregroundColor(.green)
                 }
                 .padding(.bottom, 50)
-
+                
                 Spacer()
             }
         }.navigationBarBackButtonHidden()
