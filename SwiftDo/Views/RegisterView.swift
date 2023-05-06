@@ -22,11 +22,6 @@ struct RegisterView: View {
                 //Login Form
                 Form {
                     
-                    if !viewModel.errorMessage.isEmpty {
-                        Text(viewModel.errorMessage)
-                            .foregroundColor(.red)
-                    }
-                    
                     TextField("Username...", text: $viewModel.userName)
                         .textFieldStyle(DefaultTextFieldStyle())
                         .autocorrectionDisabled()
@@ -74,6 +69,12 @@ struct RegisterView: View {
                         }
                         .foregroundColor(.green)
                     }
+                    
+                    if !viewModel.errorMessage.isEmpty {
+                        Text(viewModel.errorMessage)
+                            .foregroundColor(.red)
+                    }
+                    
                     SDButton(title: "Register", backgroundColor: .green, action: {
                         viewModel.register()
                     })

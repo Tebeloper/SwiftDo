@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB093E502A068A1A000076F7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB093E4F2A068A1A000076F7 /* Extensions.swift */; };
 		CB5946E22A00172600B49301 /* SwiftDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5946E12A00172600B49301 /* SwiftDoApp.swift */; };
 		CB5946E42A00172600B49301 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5946E32A00172600B49301 /* MainView.swift */; };
 		CB5946E62A00172700B49301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB5946E52A00172700B49301 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB093E4F2A068A1A000076F7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CB5946DE2A00172600B49301 /* SwiftDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5946E12A00172600B49301 /* SwiftDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDoApp.swift; sourceTree = "<group>"; };
 		CB5946E32A00172600B49301 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				CB5946E12A00172600B49301 /* SwiftDoApp.swift */,
 				CB5946F62A0018DD00B49301 /* GoogleService-Info.plist */,
 				CB5946E52A00172700B49301 /* Assets.xcassets */,
+				CB093E4F2A068A1A000076F7 /* Extensions.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				CB5947122A001CBC00B49301 /* ToDoListViewViewModel.swift in Sources */,
 				CB5947172A001CEC00B49301 /* LoginViewViewModel.swift in Sources */,
 				CB5946E22A00172600B49301 /* SwiftDoApp.swift in Sources */,
+				CB093E502A068A1A000076F7 /* Extensions.swift in Sources */,
 				CB59470C2A001C6300B49301 /* ToDoListItem.swift in Sources */,
 				CB5947012A001B9300B49301 /* NewItemView.swift in Sources */,
 				CB5947142A001CCA00B49301 /* NewItemViewViewModel.swift in Sources */,
