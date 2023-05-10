@@ -118,10 +118,10 @@
 				CB5946E32A00172600B49301 /* MainView.swift */,
 				CB5946FC2A001B5800B49301 /* ProfileView.swift */,
 				CB5946FE2A001B6B00B49301 /* ToDoListView.swift */,
+				CB5947072A001C2200B49301 /* ToDoListItemView.swift */,
 				CB5947002A001B9300B49301 /* NewItemView.swift */,
 				CB5947032A001BAB00B49301 /* LoginView.swift */,
 				CB5947052A001BB800B49301 /* RegisterView.swift */,
-				CB5947072A001C2200B49301 /* ToDoListItemView.swift */,
 				CBEA66A52A016EEC00196112 /* HeaderView.swift */,
 				CBB290572A03DA13000632E2 /* SDButton.swift */,
 			);
