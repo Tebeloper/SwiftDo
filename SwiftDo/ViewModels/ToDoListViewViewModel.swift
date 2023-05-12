@@ -32,7 +32,11 @@ class ToDoListViewViewModel: ObservableObject {
             .delete()
     }
     
-    func edit(id: String) {
+    func edit(item: ToDoListItem) {
+        let db = Firestore.firestore()
         
+        db.collection("users")
+            .document(userId)
+            .collection("todos")
     }
 }

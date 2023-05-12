@@ -33,7 +33,7 @@ struct ToDoListView: View {
                             .tint(.red)
                             
                             Button("Edit") {
-                                viewModel.edit(id: item.id)
+                                viewModel.edit(item: item)
                             }
                             .tint(.yellow)
                         }
